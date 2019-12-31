@@ -6,24 +6,27 @@ aws ec2 instance Ohio
 ### Restart odoo
 >sudo odoo restart
 
-
 ### config
+```
 /etc/odoo/odoo.conf
 data_dir = /home/ubuntu/.local/share/Odoo
-
-### backup db
+```
+### Backup database
+```
 pw ten anh xa
 http://my_host/web/database/manager
-
-### config domain name
+```
+### Config domain name
+```
 /etc/apache2/sites-available/my_host.conf
 sudo systemctl restart apache2
-
-### backup source code
+```
+### Backup source code
+```
 /opt
 tar -czvf opt.tar.gz /opt
 tar -xzvf opt.tar.gz -C /opt
-
+```
 ### connect to gostuffs_2019 database (usr: sync or ubuntu)
 ```
 psql -U sync -h 127.0.0.1 -d gostuffs_2019
