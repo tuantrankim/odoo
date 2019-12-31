@@ -78,3 +78,14 @@ then save file
 ### Restart postgres
 >sudo /etc/init.d/postgresql restart
 
+### How to reset master password
+```
+-open:
+/etc/odoo/odoo.conf
+-comment out admin_password by ';'
+;admin_password = xxxx
+
+-restart odoo
+open http://18.191.163.254:8069/web/database/manager to set new password
+
+```
