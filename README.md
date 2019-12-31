@@ -1,3 +1,12 @@
+### some aws services
+```
+aws email ses Oregon
+aws ec2 instance Ohio
+```
+### Restart odoo
+>sudo odoo restart
+
+
 ### config
 /etc/odoo/odoo.conf
 data_dir = /home/ubuntu/.local/share/Odoo
