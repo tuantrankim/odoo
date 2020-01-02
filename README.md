@@ -1,3 +1,51 @@
+### How to setting multiple sites in apache
+
+```
+https://www.liquidweb.com/kb/configure-apache-virtual-hosts-ubuntu-18-04/
+
+Step 1: Make a Directory for Each Site
+mkdir -p /var/www/domain.com/public_html
+mkdir -p /var/www/domain2.com/public_html
+
+Step 2: Set Folder Permissions
+chmod -R 755 /var/www
+
+Step 3: Set up an Index Page
+vim /var/www/domain.com/public_html/index.html
+testing for domain.com
+:wq
+
+Repeat the steps for your second domain, using the command below.
+vim /var/www/domain2.com/public_html/index.html
+
+Step 4: Copy the Config File for Each Site
+Copy the default configuration file for each site, this will also ensure that you always have a default copy for future site creation.
+
+cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/domain.com.conf
+
+cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/domain2.com.conf
+
+Step 5: Edit the Config File for Each Site
+vim /etc/apache2/sites-available/domain.com.conf
+
+<VirtualHost *:80>
+ServerAdmin admin@example.com
+ServerName domain.com
+ServerAlias www.domain.com
+DocumentRoot /var/www/domain.com/public_html
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+Step 6: Disable default config and Enable Your Config File
+a2dissite 000-default.conf
+a2ensite domain.com.conf
+a2ensite domain2.com.conf
+
+We restart the Apache service to register our changes.
+systemctl restart apache2
+
+```
 ### some aws services
 ```
 aws email ses Oregon
